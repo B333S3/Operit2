@@ -143,6 +143,9 @@ jobs:
           rustup target add aarch64-apple-ios
           python3 tools/build_scripts/prepare_ios_v8.py --target aarch64-apple-ios --env-file tools/release/work/ios-v8/device.env
 
+      - name: Install TypeScript compiler
+        run: npm install -g typescript
+
       - name: Build and package unsigned iOS app
         run: python3 tools/build_scripts/build_flutter_ios.py
 
