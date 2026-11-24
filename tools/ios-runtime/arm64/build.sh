@@ -40,6 +40,7 @@ case "$target" in
             -DCMAKE_OSX_DEPLOYMENT_TARGET="${OPERIT_ARM64_DEPLOYMENT_TARGET:-15.0}" \
             -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY \
             -DCMAKE_BUILD_TYPE="$build_type" -DBUILD_TESTING=OFF -DOPERIT_ARM64_LTO=OFF \
+            -DCMAKE_C_FLAGS="-Wno-error=invalid-offsetof" -DCMAKE_CXX_FLAGS="-Wno-error=invalid-offsetof" \
             -DOPERIT_ARM64_WASM="${OPERIT_ARM64_WASM:-OFF}" "$@"
         cmake --build "$build_dir" --config "$build_type" --target operit_arm64 --parallel "$jobs"
         ;;
